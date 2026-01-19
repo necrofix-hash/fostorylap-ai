@@ -41,7 +41,7 @@ git add .
 git commit -m "Initial commit"
 
 # GitHub 저장소 연결 (URL은 본인 저장소로 변경)
-git remote add origin https://github.com/YOUR_USERNAME/fostorylap-ai.git
+git remote add origin https://github.com/necrofix-hash/fostorylap-ai.git
 
 # 업로드
 git branch -M main
