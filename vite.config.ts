@@ -1,8 +1,11 @@
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig({
+  plugins: [react()],
+  base: '/ostorylap-ai/',  // 이 줄 추가 (본인 저장소 이름으로 변경)
+})
     const env = loadEnv(mode, '.', '');
     return {
       server: {
