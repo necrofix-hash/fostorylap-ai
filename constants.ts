@@ -151,6 +151,194 @@ export const MOCK_ARTICLES: Article[] = [
 
 export const MARQUEE_TEXT = "BREAKING NEWS +++ AI TAKES OVER PIXELS +++ NEW MODELS RELEASED +++ GENERATIVE FILL IS MAGIC +++ ";
 
+export interface CommunityMember {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  color: string;
+  bio: string;
+  joinedDate: string;
+  points: number;
+  badges: string[];
+  socialLinks: { platform: string; url: string }[];
+  recentWork: { title: string; imageUrl: string }[];
+  skills: string[];
+}
+
+export interface CommunityEvent {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  description: string;
+  type: 'battle' | 'showcase' | 'workshop' | 'meetup';
+  host: string;
+  attendees: number;
+  maxAttendees: number;
+  location: string;
+  topics: string[];
+  requirements: string[];
+}
+
+export interface LeaderboardEntry {
+  rank: number;
+  userId: string;
+  username: string;
+  points: number;
+  avatar: string;
+  color: string;
+  wins: number;
+  streak: number;
+}
+
+export const COMMUNITY_MEMBERS: CommunityMember[] = [
+  {
+    id: 'sarah-j',
+    name: 'Sarah Jenkins',
+    role: 'AI Artist',
+    avatar: 'SJ',
+    color: 'bg-lime-300',
+    bio: 'Professional AI artist specializing in surrealist landscapes and character design. Former traditional painter turned digital creator. Passionate about pushing the boundaries of AI-assisted creativity.',
+    joinedDate: 'March 2024',
+    points: 4850,
+    badges: ['Top Contributor', 'Prompt Master', 'Community Helper', 'Tutorial Creator'],
+    socialLinks: [{ platform: 'Twitter', url: '#' }, { platform: 'Instagram', url: '#' }, { platform: 'Portfolio', url: '#' }],
+    recentWork: [
+      { title: 'Neon Dreams', imageUrl: 'https://picsum.photos/400/300?random=101' },
+      { title: 'Digital Sunset', imageUrl: 'https://picsum.photos/400/300?random=102' },
+      { title: 'Cyber Garden', imageUrl: 'https://picsum.photos/400/300?random=103' },
+    ],
+    skills: ['Midjourney', 'Stable Diffusion', 'ComfyUI', 'Photoshop'],
+  },
+  {
+    id: 'devin-k',
+    name: 'Devin K.',
+    role: 'Prompt Engineer',
+    avatar: 'DK',
+    color: 'bg-purple-300',
+    bio: 'Prompt engineering specialist with a background in computational linguistics. Helping others master the art of AI communication. Regular workshop host and tutorial creator.',
+    joinedDate: 'January 2024',
+    points: 5120,
+    badges: ['Prompt Master', 'Workshop Host', 'Top 10 Weekly', 'Mentor'],
+    socialLinks: [{ platform: 'Twitter', url: '#' }, { platform: 'GitHub', url: '#' }],
+    recentWork: [
+      { title: 'Prompt Guide V2', imageUrl: 'https://picsum.photos/400/300?random=104' },
+      { title: 'Style Transfer Study', imageUrl: 'https://picsum.photos/400/300?random=105' },
+      { title: 'Character Consistency', imageUrl: 'https://picsum.photos/400/300?random=106' },
+    ],
+    skills: ['Prompt Engineering', 'DALL-E 3', 'Claude', 'Technical Writing'],
+  },
+  {
+    id: 'm-robson',
+    name: 'M. Robson',
+    role: 'Designer',
+    avatar: 'MR',
+    color: 'bg-cyan-300',
+    bio: 'UX/UI designer integrating AI tools into professional workflows. Focused on practical applications of generative AI in design systems and brand identity work.',
+    joinedDate: 'February 2024',
+    points: 3890,
+    badges: ['Design Expert', 'Community Helper', 'Beta Tester'],
+    socialLinks: [{ platform: 'Dribbble', url: '#' }, { platform: 'LinkedIn', url: '#' }],
+    recentWork: [
+      { title: 'AI Brand System', imageUrl: 'https://picsum.photos/400/300?random=107' },
+      { title: 'Generative Icons', imageUrl: 'https://picsum.photos/400/300?random=108' },
+      { title: 'UI Kit Concept', imageUrl: 'https://picsum.photos/400/300?random=109' },
+    ],
+    skills: ['Figma', 'Adobe Firefly', 'UI Design', 'Brand Identity'],
+  },
+  {
+    id: 'ai-whisperer',
+    name: 'AI Whisperer',
+    role: 'Researcher',
+    avatar: 'AW',
+    color: 'bg-pink-300',
+    bio: 'AI researcher and ethicist exploring the intersection of machine learning and creative expression. Contributing to open-source AI tools and writing about responsible AI use.',
+    joinedDate: 'December 2023',
+    points: 6200,
+    badges: ['Researcher', 'Ethics Advocate', 'Top Contributor', 'Founding Member'],
+    socialLinks: [{ platform: 'Twitter', url: '#' }, { platform: 'Blog', url: '#' }, { platform: 'GitHub', url: '#' }],
+    recentWork: [
+      { title: 'Ethics Framework', imageUrl: 'https://picsum.photos/400/300?random=110' },
+      { title: 'Model Comparison', imageUrl: 'https://picsum.photos/400/300?random=111' },
+      { title: 'Training Analysis', imageUrl: 'https://picsum.photos/400/300?random=112' },
+    ],
+    skills: ['Research', 'Python', 'Machine Learning', 'Technical Writing'],
+  },
+];
+
+export const COMMUNITY_EVENTS: CommunityEvent[] = [
+  {
+    id: 'weekly-prompt-battle',
+    title: 'Weekly Prompt Battle',
+    date: 'Every Friday',
+    time: '8PM EST',
+    description: 'Compete against fellow community members in our weekly prompt battle! Each week features a new theme. Participants have 30 minutes to create their best image using the given prompt constraints. Winners receive points and exclusive badges.',
+    type: 'battle',
+    host: 'Community Team',
+    attendees: 89,
+    maxAttendees: 150,
+    location: 'Discord #prompt-battle',
+    topics: ['Competition', 'Prompt Writing', 'Speed Creation', 'Community Voting'],
+    requirements: ['Discord account', 'Any AI image generator', 'Creative spirit!'],
+  },
+  {
+    id: 'ai-art-showcase',
+    title: 'AI Art Showcase',
+    date: 'Jan 25, 2025',
+    time: '6PM EST',
+    description: 'Monthly showcase where community members present their best work from the past month. Get feedback from peers, discover new techniques, and celebrate creative achievements together.',
+    type: 'showcase',
+    host: 'Sarah Jenkins',
+    attendees: 156,
+    maxAttendees: 200,
+    location: 'Discord #showcase-stage',
+    topics: ['Art Presentation', 'Feedback Session', 'Technique Sharing', 'Networking'],
+    requirements: ['At least one piece to share', 'Constructive attitude'],
+  },
+  {
+    id: 'comfyui-workshop',
+    title: 'Tool Workshop: ComfyUI',
+    date: 'Jan 28, 2025',
+    time: '3PM EST',
+    description: 'Deep dive into ComfyUI with our resident expert. Learn to build custom workflows, integrate ControlNet, and automate your creative process. Suitable for intermediate users.',
+    type: 'workshop',
+    host: 'Devin K.',
+    attendees: 45,
+    maxAttendees: 50,
+    location: 'Discord #workshop-room',
+    topics: ['ComfyUI Basics', 'Custom Nodes', 'Workflow Building', 'ControlNet Integration'],
+    requirements: ['ComfyUI installed', 'Basic Stable Diffusion knowledge', 'GPU with 8GB+ VRAM'],
+  },
+  {
+    id: 'virtual-meetup-feb',
+    title: 'Virtual Meetup: AI in 2025',
+    date: 'Feb 5, 2025',
+    time: '7PM EST',
+    description: 'Casual virtual hangout to discuss the future of AI in creative fields. Share predictions, concerns, and excitement about upcoming developments. All experience levels welcome!',
+    type: 'meetup',
+    host: 'AI Whisperer',
+    attendees: 78,
+    maxAttendees: 100,
+    location: 'Discord #voice-lounge',
+    topics: ['Industry Trends', 'Future Predictions', 'Open Discussion', 'Q&A'],
+    requirements: ['Curiosity about AI future'],
+  },
+];
+
+export const LEADERBOARD_DATA: LeaderboardEntry[] = [
+  { rank: 1, oderId: 'pm99', username: 'PromptMaster_99', points: 1250, avatar: 'PM', color: 'bg-yellow-400', wins: 12, streak: 5 },
+  { rank: 2, oderId: 'aiart', username: 'AIArtisan', points: 1100, avatar: 'AA', color: 'bg-gray-300', wins: 9, streak: 3 },
+  { rank: 3, oderId: 'pixel', username: 'PixelDreamer', points: 950, avatar: 'PD', color: 'bg-orange-400', wins: 7, streak: 2 },
+  { rank: 4, userId: 'neon', username: 'NeonNinja', points: 890, avatar: 'NN', color: 'bg-purple-300', wins: 6, streak: 4 },
+  { rank: 5, oderId: 'synth', username: 'SynthWave', points: 820, avatar: 'SW', color: 'bg-cyan-300', wins: 5, streak: 1 },
+  { rank: 6, userId: 'dream', username: 'DreamCatcher', points: 780, avatar: 'DC', color: 'bg-pink-300', wins: 5, streak: 2 },
+  { rank: 7, userId: 'cyber', username: 'CyberCanvas', points: 720, avatar: 'CC', color: 'bg-lime-300', wins: 4, streak: 0 },
+  { rank: 8, userId: 'gen', username: 'GenArtist', points: 680, avatar: 'GA', color: 'bg-orange-300', wins: 4, streak: 1 },
+  { rank: 9, userId: 'flux', username: 'FluxMaster', points: 650, avatar: 'FM', color: 'bg-blue-300', wins: 3, streak: 3 },
+  { rank: 10, userId: 'vision', username: 'VisionaryAI', points: 600, avatar: 'VA', color: 'bg-red-300', wins: 3, streak: 0 },
+];
+
 export interface EthicsTopic {
   id: string;
   title: string;

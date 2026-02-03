@@ -1,21 +1,12 @@
 import React from 'react';
-import { Users, MessageSquare, Trophy, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, MessageSquare, Trophy, Calendar, ArrowRight } from 'lucide-react';
+import { COMMUNITY_MEMBERS, COMMUNITY_EVENTS, LEADERBOARD_DATA } from '../constants';
 import Button from '../components/Button';
 
-const COMMUNITY_MEMBERS = [
-  { name: 'Sarah J.', role: 'AI Artist', avatar: 'SJ', color: 'bg-lime-300' },
-  { name: 'Devin K.', role: 'Prompt Engineer', avatar: 'DK', color: 'bg-purple-300' },
-  { name: 'M. Robson', role: 'Designer', avatar: 'MR', color: 'bg-cyan-300' },
-  { name: 'AI Whisperer', role: 'Researcher', avatar: 'AW', color: 'bg-pink-300' },
-];
-
-const UPCOMING_EVENTS = [
-  { title: 'Weekly Prompt Battle', date: 'Every Friday', time: '8PM EST' },
-  { title: 'AI Art Showcase', date: 'Jan 25', time: '6PM EST' },
-  { title: 'Tool Workshop: ComfyUI', date: 'Jan 28', time: '3PM EST' },
-];
-
 const CommunityPage: React.FC = () => {
+  const topLeaderboard = LEADERBOARD_DATA.slice(0, 3);
+
   return (
     <div className="min-h-screen bg-neutral-100 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -56,31 +47,52 @@ const CommunityPage: React.FC = () => {
               <h3 className="text-2xl font-black mb-6">FEATURED MEMBERS</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {COMMUNITY_MEMBERS.map((member) => (
-                  <div key={member.name} className="text-center">
-                    <div className={`${member.color} w-20 h-20 mx-auto border-2 border-black flex items-center justify-center text-2xl font-black mb-2`}>
+                  <Link
+                    key={member.id}
+                    to={`/member/${member.id}`}
+                    className="text-center group"
+                  >
+                    <div className={`${member.color} w-20 h-20 mx-auto border-2 border-black flex items-center justify-center text-2xl font-black mb-2 group-hover:shadow-[4px_4px_0px_0px_#000] group-hover:-translate-y-1 transition-all`}>
                       {member.avatar}
                     </div>
-                    <h4 className="font-bold">{member.name}</h4>
+                    <h4 className="font-bold group-hover:underline">{member.name}</h4>
                     <p className="text-sm text-neutral-500">{member.role}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
 
             {/* Leaderboard */}
             <div className="bg-yellow-300 border-2 border-black p-8 shadow-[4px_4px_0px_0px_#000]">
-              <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
-                <Trophy /> WEEKLY LEADERBOARD
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-black flex items-center gap-2">
+                  <Trophy /> WEEKLY LEADERBOARD
+                </h3>
+                <Link
+                  to="/leaderboard"
+                  className="font-bold flex items-center gap-1 hover:underline"
+                >
+                  View All <ArrowRight size={16} />
+                </Link>
+              </div>
               <div className="space-y-4">
-                {['PromptMaster_99', 'AIArtisan', 'PixelDreamer'].map((user, index) => (
-                  <div key={user} className="flex items-center gap-4 bg-white/50 p-3 border-2 border-black">
-                    <span className="text-2xl font-black w-8">{index + 1}</span>
-                    <span className="flex-1 font-bold">{user}</span>
-                    <span className="font-mono">{1250 - index * 150} pts</span>
+                {topLeaderboard.map((user) => (
+                  <div key={user.rank} className="flex items-center gap-4 bg-white/50 p-3 border-2 border-black hover:bg-white transition-colors">
+                    <span className="text-2xl font-black w-8">{user.rank}</span>
+                    <div className={`w-10 h-10 ${user.color} border-2 border-black flex items-center justify-center font-black`}>
+                      {user.avatar}
+                    </div>
+                    <span className="flex-1 font-bold">{user.username}</span>
+                    <span className="font-mono">{user.points} pts</span>
                   </div>
                 ))}
               </div>
+              <Link
+                to="/leaderboard"
+                className="block mt-4 text-center py-3 bg-black text-white font-bold hover:bg-neutral-800 transition-colors"
+              >
+                SEE FULL LEADERBOARD
+              </Link>
             </div>
           </div>
 
@@ -92,13 +104,23 @@ const CommunityPage: React.FC = () => {
                 <Calendar /> UPCOMING EVENTS
               </h3>
               <div className="space-y-4">
-                {UPCOMING_EVENTS.map((event, index) => (
-                  <div key={index} className="border-b-2 border-black pb-4 last:border-b-0 last:pb-0">
-                    <h4 className="font-bold">{event.title}</h4>
+                {COMMUNITY_EVENTS.slice(0, 3).map((event) => (
+                  <Link
+                    key={event.id}
+                    to={`/event/${event.id}`}
+                    className="block border-b-2 border-black pb-4 last:border-b-0 last:pb-0 hover:bg-neutral-50 -mx-2 px-2 py-1 transition-colors group"
+                  >
+                    <h4 className="font-bold group-hover:underline">{event.title}</h4>
                     <p className="text-sm text-neutral-500">{event.date} • {event.time}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
+              <Link
+                to="/event/weekly-prompt-battle"
+                className="block mt-4 text-center py-2 border-2 border-black font-bold hover:bg-lime-300 transition-colors"
+              >
+                VIEW ALL EVENTS
+              </Link>
             </div>
 
             {/* Stats */}

@@ -15,6 +15,9 @@ import ArticleDetailPage from './pages/ArticleDetailPage';
 import ToolDetailPage from './pages/ToolDetailPage';
 import TutorialDetailPage from './pages/TutorialDetailPage';
 import EthicsTopicPage from './pages/EthicsTopicPage';
+import MemberProfilePage from './pages/MemberProfilePage';
+import EventDetailPage from './pages/EventDetailPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 const HomePage: React.FC = () => {
   return (
@@ -44,6 +47,9 @@ const App: React.FC = () => {
             <Route path="/ethics" element={<EthicsPage />} />
             <Route path="/ethics/:id" element={<EthicsTopicPage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/member/:id" element={<MemberProfilePage />} />
+            <Route path="/event/:id" element={<EventDetailPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
           </Routes>
         </main>
         <Footer />
