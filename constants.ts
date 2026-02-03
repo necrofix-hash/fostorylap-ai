@@ -151,6 +151,127 @@ export const MOCK_ARTICLES: Article[] = [
 
 export const MARQUEE_TEXT = "BREAKING NEWS +++ AI TAKES OVER PIXELS +++ NEW MODELS RELEASED +++ GENERATIVE FILL IS MAGIC +++ ";
 
+export interface Tutorial {
+  id: string;
+  title: string;
+  author: string;
+  duration: string;
+  level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+  bgColor: string;
+  description: string;
+  topics: string[];
+  requirements: string[];
+  content: {
+    section: string;
+    text: string;
+  }[];
+}
+
+export const TUTORIALS_DATA: Tutorial[] = [
+  {
+    id: 'midjourney-v7-getting-started',
+    title: 'Getting Started with Midjourney V7',
+    author: 'Sarah Jenkins',
+    duration: '15 min',
+    level: 'BEGINNER',
+    bgColor: 'bg-lime-300',
+    description: 'Learn the basics of Midjourney V7 and create your first AI-generated images. This tutorial covers setup, basic prompts, and essential parameters.',
+    topics: ['Discord setup', 'Basic prompts', 'Parameters', 'Aspect ratios', 'Upscaling'],
+    requirements: ['Discord account', 'Midjourney subscription'],
+    content: [
+      { section: 'Introduction', text: 'Midjourney V7 represents a significant leap in AI image generation. With improved understanding of complex prompts and enhanced photorealistic capabilities, it\'s the perfect tool for both beginners and professionals.' },
+      { section: 'Setting Up Discord', text: 'First, join the Midjourney Discord server. Navigate to any #newbies channel to start generating images. Use the /imagine command followed by your prompt to begin creating.' },
+      { section: 'Writing Your First Prompt', text: 'Start simple: describe what you want to see. For example, "a sunset over mountains" will generate a beautiful landscape. As you progress, add more details like style, mood, and colors.' },
+      { section: 'Essential Parameters', text: 'Learn key parameters: --ar for aspect ratio (e.g., --ar 16:9), --v for version, --q for quality, and --s for stylization. These give you control over your outputs.' },
+    ],
+  },
+  {
+    id: 'advanced-prompt-engineering',
+    title: 'Advanced Prompt Engineering Techniques',
+    author: 'Devin K.',
+    duration: '25 min',
+    level: 'ADVANCED',
+    bgColor: 'bg-purple-300',
+    description: 'Master the art of crafting prompts that consistently produce stunning results. Learn advanced techniques used by professional AI artists.',
+    topics: ['Prompt structure', 'Style mixing', 'Negative prompts', 'Weight balancing', 'Multi-prompting'],
+    requirements: ['Basic AI image generation experience', 'Understanding of artistic terminology'],
+    content: [
+      { section: 'The Anatomy of a Perfect Prompt', text: 'A well-structured prompt follows this pattern: Subject + Environment + Style + Lighting + Camera + Technical specifications. Each element adds precision to your output.' },
+      { section: 'Style Mixing Techniques', text: 'Combine multiple artistic styles for unique results. Try "cyberpunk meets art nouveau" or "Miyazaki style with Moebius colors". The AI blends these influences seamlessly.' },
+      { section: 'Using Negative Prompts Effectively', text: 'Negative prompts tell the AI what to avoid. Common negatives include: blurry, distorted, low quality, watermark. Use them strategically to refine outputs.' },
+      { section: 'Weight Balancing', text: 'Control element emphasis using weights. In Stable Diffusion: (important element:1.5) increases emphasis, while (less important:0.7) reduces it. Balance is key.' },
+    ],
+  },
+  {
+    id: 'lora-training-guide',
+    title: 'Training Your Own LoRA Model',
+    author: 'AI Whisperer',
+    duration: '45 min',
+    level: 'EXPERT',
+    bgColor: 'bg-orange-300',
+    description: 'Deep dive into training custom LoRA models. Create personalized AI models that capture specific styles, characters, or concepts.',
+    topics: ['Dataset preparation', 'Kohya trainer', 'Hyperparameters', 'Testing', 'Optimization'],
+    requirements: ['GPU with 8GB+ VRAM', 'Python knowledge', 'Stable Diffusion installed'],
+    content: [
+      { section: 'Understanding LoRA', text: 'LoRA (Low-Rank Adaptation) allows you to fine-tune large models efficiently. Instead of training billions of parameters, you train small adapter weights that modify the base model\'s behavior.' },
+      { section: 'Preparing Your Dataset', text: 'Collect 15-50 high-quality images. Consistency is key: similar lighting, angles, and quality. Caption each image accurately describing the subject and style.' },
+      { section: 'Setting Up Kohya Trainer', text: 'Install Kohya SS GUI for an accessible training interface. Configure your model path, dataset location, and output directory. Select appropriate settings for your GPU.' },
+      { section: 'Optimal Hyperparameters', text: 'Start with: Learning rate 1e-4, Network dim 32, Network alpha 16, 1000-2000 steps. Adjust based on results. Lower learning rates for more subtle changes.' },
+    ],
+  },
+  {
+    id: 'stable-diffusion-xl-basics',
+    title: 'Stable Diffusion XL Basics',
+    author: 'M. Robson',
+    duration: '20 min',
+    level: 'BEGINNER',
+    bgColor: 'bg-cyan-300',
+    description: 'Get started with Stable Diffusion XL, the latest open-source image generation model. Learn installation, basic usage, and key differences from previous versions.',
+    topics: ['Installation', 'Basic generation', 'Refiner model', 'Resolution', 'Samplers'],
+    requirements: ['Computer with modern GPU', 'Basic command line knowledge'],
+    content: [
+      { section: 'What is SDXL?', text: 'Stable Diffusion XL is a significant upgrade with a larger UNet, dual text encoders, and native 1024x1024 resolution. It produces more detailed and coherent images out of the box.' },
+      { section: 'Installation Options', text: 'Choose your interface: Automatic1111, ComfyUI, or Invoke AI. Each has strengths - A1111 for extensions, ComfyUI for workflows, Invoke for ease of use.' },
+      { section: 'The Refiner Model', text: 'SDXL uses a two-stage process: base model generates the image, refiner adds detail. Use the refiner at 0.7-0.8 denoise for best results.' },
+      { section: 'Optimal Settings', text: 'Use 1024x1024 base resolution. DPM++ 2M Karras sampler with 25-30 steps works well. CFG scale 7-8 balances creativity and prompt adherence.' },
+    ],
+  },
+  {
+    id: 'comfyui-workflow-masterclass',
+    title: 'ComfyUI Workflow Masterclass',
+    author: 'Node Master',
+    duration: '60 min',
+    level: 'ADVANCED',
+    bgColor: 'bg-pink-300',
+    description: 'Master ComfyUI\'s node-based workflow system. Build complex, reusable pipelines for advanced image generation and manipulation.',
+    topics: ['Node basics', 'Custom workflows', 'ControlNet', 'IP-Adapter', 'Automation'],
+    requirements: ['ComfyUI installed', 'Understanding of Stable Diffusion'],
+    content: [
+      { section: 'Why ComfyUI?', text: 'ComfyUI offers unmatched flexibility through its node-based system. Create complex workflows that would be impossible in traditional interfaces. Save and share workflows easily.' },
+      { section: 'Essential Nodes', text: 'Master these core nodes: KSampler for generation, VAE Encode/Decode for latent space, CLIP Text Encode for prompts, Load Checkpoint for models.' },
+      { section: 'Building ControlNet Workflows', text: 'Add precision with ControlNet. Connect your control image through a ControlNet Apply node. Combine multiple ControlNets for complex control over composition, pose, and depth.' },
+      { section: 'IP-Adapter Integration', text: 'Use IP-Adapter for style and face consistency. Load the IP-Adapter model, connect reference images, and blend styles seamlessly. Perfect for character consistency.' },
+    ],
+  },
+  {
+    id: 'ai-video-runway',
+    title: 'AI Video Generation with Runway',
+    author: 'Video Synth',
+    duration: '30 min',
+    level: 'INTERMEDIATE',
+    bgColor: 'bg-yellow-300',
+    description: 'Create stunning AI-generated videos using Runway Gen-2. Learn text-to-video, image-to-video, and advanced motion control techniques.',
+    topics: ['Text-to-video', 'Image animation', 'Motion brush', 'Camera controls', 'Export settings'],
+    requirements: ['Runway account', 'Basic video editing knowledge'],
+    content: [
+      { section: 'Introduction to Gen-2', text: 'Runway Gen-2 transforms text and images into video. It understands natural language descriptions of motion, style, and scene progression.' },
+      { section: 'Text-to-Video Basics', text: 'Start with clear, descriptive prompts. Include motion words: "walking", "flowing", "drifting". Describe camera movement: "slow pan", "zoom in", "tracking shot".' },
+      { section: 'Image-to-Video Magic', text: 'Upload a starting image for more control. The AI animates your image while maintaining its style. Perfect for bringing illustrations and photos to life.' },
+      { section: 'Motion Brush Technique', text: 'Use the motion brush to specify exactly where and how motion occurs. Paint areas that should move, set direction and intensity. Combine with static areas for professional results.' },
+    ],
+  },
+];
+
 export interface Tool {
   id: string;
   name: string;

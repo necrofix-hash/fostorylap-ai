@@ -1,50 +1,7 @@
 import React from 'react';
-import { BookOpen, Clock, User } from 'lucide-react';
-
-const TUTORIALS_DATA = [
-  {
-    title: 'Getting Started with Midjourney V7',
-    author: 'Sarah Jenkins',
-    duration: '15 min',
-    level: 'BEGINNER',
-    bgColor: 'bg-lime-300',
-  },
-  {
-    title: 'Advanced Prompt Engineering Techniques',
-    author: 'Devin K.',
-    duration: '25 min',
-    level: 'ADVANCED',
-    bgColor: 'bg-purple-300',
-  },
-  {
-    title: 'Training Your Own LoRA Model',
-    author: 'AI Whisperer',
-    duration: '45 min',
-    level: 'EXPERT',
-    bgColor: 'bg-orange-300',
-  },
-  {
-    title: 'Stable Diffusion XL Basics',
-    author: 'M. Robson',
-    duration: '20 min',
-    level: 'BEGINNER',
-    bgColor: 'bg-cyan-300',
-  },
-  {
-    title: 'ComfyUI Workflow Masterclass',
-    author: 'Node Master',
-    duration: '60 min',
-    level: 'ADVANCED',
-    bgColor: 'bg-pink-300',
-  },
-  {
-    title: 'AI Video Generation with Runway',
-    author: 'Video Synth',
-    duration: '30 min',
-    level: 'INTERMEDIATE',
-    bgColor: 'bg-yellow-300',
-  },
-];
+import { Link } from 'react-router-dom';
+import { BookOpen, Clock, User, ArrowRight } from 'lucide-react';
+import { TUTORIALS_DATA } from '../constants';
 
 const TutorialsPage: React.FC = () => {
   return (
@@ -66,9 +23,10 @@ const TutorialsPage: React.FC = () => {
         {/* Tutorials List */}
         <div className="space-y-6">
           {TUTORIALS_DATA.map((tutorial, index) => (
-            <div
-              key={index}
-              className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer"
+            <Link
+              key={tutorial.id}
+              to={`/tutorial/${tutorial.id}`}
+              className="block bg-white border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all group"
             >
               <div className="flex flex-col md:flex-row">
                 <div className={`${tutorial.bgColor} w-full md:w-48 h-32 md:h-auto border-b-2 md:border-b-0 md:border-r-2 border-black flex items-center justify-center`}>
@@ -80,7 +38,7 @@ const TutorialsPage: React.FC = () => {
                       {tutorial.level}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-black mb-3">{tutorial.title}</h3>
+                  <h3 className="text-2xl font-black mb-3 group-hover:text-blue-700 transition-colors">{tutorial.title}</h3>
                   <div className="flex flex-wrap gap-4 text-neutral-600">
                     <span className="flex items-center gap-1">
                       <User size={16} /> {tutorial.author}
@@ -91,10 +49,12 @@ const TutorialsPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="p-6 flex items-center border-t-2 md:border-t-0 md:border-l-2 border-black">
-                  <span className="font-bold text-lg hover:underline">START →</span>
+                  <span className="font-bold text-lg flex items-center gap-2 group-hover:underline">
+                    START <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
