@@ -151,6 +151,161 @@ export const MOCK_ARTICLES: Article[] = [
 
 export const MARQUEE_TEXT = "BREAKING NEWS +++ AI TAKES OVER PIXELS +++ NEW MODELS RELEASED +++ GENERATIVE FILL IS MAGIC +++ ";
 
+export interface EthicsTopic {
+  id: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  icon: 'copyright' | 'deepfake' | 'compensation' | 'environment' | 'framework' | 'legal' | 'checklist' | 'report';
+  category: 'topic' | 'resource';
+  bgColor: string;
+  content: {
+    section: string;
+    text: string;
+  }[];
+  keyPoints: string[];
+  relatedLinks: { title: string; url: string }[];
+}
+
+export const ETHICS_DATA: EthicsTopic[] = [
+  {
+    id: 'copyright-training-data',
+    title: 'Copyright & Training Data',
+    shortTitle: 'Copyright',
+    description: 'Understanding the complex legal landscape of AI training data, copyright claims, and the rights of original creators.',
+    icon: 'copyright',
+    category: 'topic',
+    bgColor: 'bg-orange-300',
+    content: [
+      { section: 'The Core Issue', text: 'AI models are trained on vast datasets that often include copyrighted works. This has sparked intense debate about whether this constitutes fair use or copyright infringement. Artists and creators are increasingly concerned about their work being used without consent or compensation.' },
+      { section: 'Current Legal Landscape', text: 'Multiple lawsuits are currently challenging AI companies\' use of copyrighted material. Courts are grappling with questions that existing copyright law wasn\'t designed to address. The outcomes of these cases will shape the future of AI-generated content.' },
+      { section: 'Different Perspectives', text: 'AI companies argue that training is transformative fair use, similar to how humans learn from existing works. Artists counter that their specific styles and techniques are being replicated without permission. Both sides raise valid concerns that need balanced consideration.' },
+      { section: 'Best Practices', text: 'Until legal clarity emerges, creators should: use models trained on licensed data when possible, avoid directly replicating specific artists\' styles, be transparent about AI usage, and consider the ethical implications of their creative choices.' },
+    ],
+    keyPoints: ['Training data often includes copyrighted works', 'Legal status remains uncertain', 'Multiple ongoing lawsuits', 'Transparency is crucial'],
+    relatedLinks: [{ title: 'US Copyright Office on AI', url: '#' }, { title: 'EU AI Act Overview', url: '#' }],
+  },
+  {
+    id: 'deepfakes-misinformation',
+    title: 'Deepfakes & Misinformation',
+    shortTitle: 'Deepfakes',
+    description: 'The dangers of synthetic media, how to identify manipulated content, and the responsibility of creators.',
+    icon: 'deepfake',
+    category: 'topic',
+    bgColor: 'bg-red-300',
+    content: [
+      { section: 'What Are Deepfakes?', text: 'Deepfakes are AI-generated synthetic media where a person\'s likeness is replaced with someone else\'s. While the technology has legitimate uses in entertainment and education, it poses serious risks when used maliciously for fraud, harassment, or political manipulation.' },
+      { section: 'The Misinformation Threat', text: 'AI-generated images and videos can spread false narratives at unprecedented speed. From fake political speeches to fabricated evidence, synthetic media threatens to erode trust in visual information. The phrase "seeing is believing" no longer holds true.' },
+      { section: 'Detection Methods', text: 'Look for: unnatural blinking or eye movement, inconsistent lighting, blurry boundaries around faces, audio-visual sync issues, and artifacts in hair or jewelry. Detection tools are improving but struggle to keep pace with generation technology.' },
+      { section: 'Creator Responsibility', text: 'As creators, we must never use AI to deceive or harm. Always label synthetic content clearly, never create non-consensual intimate imagery, and consider the potential misuse of realistic generations before sharing.' },
+    ],
+    keyPoints: ['Deepfakes can be used for fraud and manipulation', 'Detection is increasingly difficult', 'Clear labeling is essential', 'Never create non-consensual content'],
+    relatedLinks: [{ title: 'Deepfake Detection Tools', url: '#' }, { title: 'Report Harmful Content', url: '#' }],
+  },
+  {
+    id: 'artist-compensation',
+    title: 'Artist Compensation',
+    shortTitle: 'Compensation',
+    description: 'Exploring fair compensation models for artists whose work contributes to AI training and the future of creative labor.',
+    icon: 'compensation',
+    category: 'topic',
+    bgColor: 'bg-purple-300',
+    content: [
+      { section: 'The Compensation Gap', text: 'Artists whose work was used to train AI models have received no compensation, while companies profit from these systems. This has created a fundamental tension in the creative industry about the value of original work in the AI age.' },
+      { section: 'Proposed Solutions', text: 'Several compensation models are being explored: opt-in licensing systems, collective bargaining through artist unions, royalty structures similar to music streaming, and blockchain-based attribution systems. Each has advantages and implementation challenges.' },
+      { section: 'The Value of Human Creativity', text: 'AI cannot create without human creativity as its foundation. Every generated image builds on millions of human-created works. Recognizing and compensating this contribution is both an ethical imperative and essential for sustaining future creativity.' },
+      { section: 'Supporting Artists Today', text: 'While systemic solutions develop, individuals can help: commission original art, credit inspirations, support artists on platforms like Patreon, advocate for fair compensation policies, and choose AI tools with ethical training practices.' },
+    ],
+    keyPoints: ['Artists deserve compensation for training contributions', 'Multiple models being explored', 'Human creativity remains foundational', 'Support artists directly'],
+    relatedLinks: [{ title: 'Artist Rights Organizations', url: '#' }, { title: 'Ethical AI Platforms', url: '#' }],
+  },
+  {
+    id: 'environmental-impact',
+    title: 'Environmental Impact',
+    shortTitle: 'Environment',
+    description: 'The carbon footprint of AI training and generation, and how to minimize environmental harm in creative workflows.',
+    icon: 'environment',
+    category: 'topic',
+    bgColor: 'bg-green-300',
+    content: [
+      { section: 'The Hidden Cost', text: 'Training large AI models requires enormous computational resources. A single large language model training run can emit as much carbon as five cars over their entire lifetimes. Image generation models have similar environmental footprints.' },
+      { section: 'Generation Impact', text: 'Every image you generate consumes energy. While individual generations are small, the cumulative impact of millions of daily generations is significant. Cloud providers are working toward renewable energy, but progress varies.' },
+      { section: 'Sustainable Practices', text: 'Minimize unnecessary generations by planning prompts carefully. Use smaller, efficient models when possible. Run local models on renewable energy. Choose cloud providers committed to carbon neutrality. Batch similar requests together.' },
+      { section: 'Industry Responsibility', text: 'AI companies must invest in efficiency improvements, transparent carbon reporting, and renewable energy infrastructure. As users, we can pressure companies by choosing environmentally responsible platforms.' },
+    ],
+    keyPoints: ['AI training has significant carbon footprint', 'Every generation consumes energy', 'Choose efficient models', 'Support carbon-neutral providers'],
+    relatedLinks: [{ title: 'AI Carbon Calculator', url: '#' }, { title: 'Green AI Initiative', url: '#' }],
+  },
+  {
+    id: 'ai-ethics-framework',
+    title: 'AI Ethics Framework',
+    shortTitle: 'Framework',
+    description: 'A comprehensive framework for ethical AI use in creative work, covering principles, decision-making, and accountability.',
+    icon: 'framework',
+    category: 'resource',
+    bgColor: 'bg-cyan-300',
+    content: [
+      { section: 'Core Principles', text: 'Our framework rests on four pillars: Transparency (always disclose AI use), Respect (honor the rights of all creators), Responsibility (consider the impact of your creations), and Integrity (never deceive or harm through AI).' },
+      { section: 'Decision Framework', text: 'Before creating, ask: Would this harm anyone? Am I respecting others\' rights? Am I being transparent? Would I be comfortable if this were public? Could this be misused? If any answer raises concern, reconsider your approach.' },
+      { section: 'Accountability Measures', text: 'Document your AI workflows, maintain records of tools and prompts used, be prepared to explain your creative process, and take responsibility for the outputs you publish, regardless of how they were created.' },
+      { section: 'Continuous Learning', text: 'Ethics in AI is rapidly evolving. Stay informed about new developments, engage with diverse perspectives, update your practices as norms develop, and contribute to the ongoing conversation about AI ethics.' },
+    ],
+    keyPoints: ['Transparency, Respect, Responsibility, Integrity', 'Question before creating', 'Document your workflows', 'Stay informed and adapt'],
+    relatedLinks: [{ title: 'Download Framework PDF', url: '#' }, { title: 'Ethics Workshops', url: '#' }],
+  },
+  {
+    id: 'legal-guidelines',
+    title: 'Legal Guidelines',
+    shortTitle: 'Legal',
+    description: 'Navigate the legal aspects of AI-generated content, including copyright, commercial use, and platform policies.',
+    icon: 'legal',
+    category: 'resource',
+    bgColor: 'bg-yellow-300',
+    content: [
+      { section: 'Copyright Basics', text: 'AI-generated content occupies uncertain legal territory. The US Copyright Office has indicated that purely AI-generated works may not be copyrightable, while works with significant human creative input may qualify. Document your creative contributions.' },
+      { section: 'Commercial Use', text: 'Review the terms of service for any AI tool before commercial use. Many free tiers prohibit commercial applications. Paid tiers often grant commercial rights but may have attribution requirements or usage limits.' },
+      { section: 'Platform Policies', text: 'Social media and content platforms are developing AI disclosure policies. Many now require labeling of AI-generated content. Failure to comply can result in content removal or account suspension. Stay updated on policy changes.' },
+      { section: 'Protecting Yourself', text: 'Keep records of your creative process, use tools with clear commercial licenses, add appropriate disclosures, avoid generating content that infringes on others\' rights, and consult legal counsel for significant commercial projects.' },
+    ],
+    keyPoints: ['AI copyright law is evolving', 'Check commercial use terms', 'Follow platform disclosure policies', 'Document your process'],
+    relatedLinks: [{ title: 'Copyright Office Guidelines', url: '#' }, { title: 'Platform Policy Tracker', url: '#' }],
+  },
+  {
+    id: 'best-practices-checklist',
+    title: 'Best Practices Checklist',
+    shortTitle: 'Checklist',
+    description: 'A practical checklist for ethical AI creation, from project planning through publication and beyond.',
+    icon: 'checklist',
+    category: 'resource',
+    bgColor: 'bg-lime-300',
+    content: [
+      { section: 'Before Creating', text: '□ Define your creative intent clearly\n□ Choose tools with ethical training practices\n□ Verify commercial use rights if needed\n□ Consider potential negative impacts\n□ Plan how you\'ll disclose AI use' },
+      { section: 'During Creation', text: '□ Avoid replicating specific artists\' styles\n□ Don\'t generate harmful or deceptive content\n□ Document your prompts and process\n□ Use efficient generation practices\n□ Review outputs for unintended issues' },
+      { section: 'Before Publishing', text: '□ Add clear AI disclosure labels\n□ Credit tools and models used\n□ Check platform policies\n□ Verify you have usage rights\n□ Consider audience impact' },
+      { section: 'Ongoing Practices', text: '□ Stay updated on ethics developments\n□ Engage with creator communities\n□ Support fair compensation initiatives\n□ Report misuse when observed\n□ Continuously refine your practices' },
+    ],
+    keyPoints: ['Plan ethically from the start', 'Document everything', 'Always disclose AI use', 'Stay engaged and updated'],
+    relatedLinks: [{ title: 'Printable Checklist', url: '#' }, { title: 'Community Forum', url: '#' }],
+  },
+  {
+    id: 'report-misuse',
+    title: 'Report Misuse',
+    shortTitle: 'Report',
+    description: 'How to identify and report harmful AI-generated content, and resources for those affected by AI misuse.',
+    icon: 'report',
+    category: 'resource',
+    bgColor: 'bg-red-200',
+    content: [
+      { section: 'What to Report', text: 'Report AI content that: depicts real people without consent, spreads misinformation, constitutes harassment or threats, infringes copyright at scale, enables fraud or scams, or violates platform terms of service.' },
+      { section: 'How to Report', text: 'Most platforms have dedicated reporting mechanisms. Use in-app reporting for fastest response. For serious violations, contact platform trust & safety teams directly. Document evidence before reporting as content may be removed.' },
+      { section: 'If You\'re a Victim', text: 'If your likeness or work has been misused: document everything, report to platforms immediately, consider consulting legal counsel, contact organizations like NCMEC for intimate imagery, and reach out to support communities.' },
+      { section: 'Platform Contacts', text: 'Each major platform has specific reporting channels. Check their help centers for AI-specific reporting options. For cross-platform issues, organizations like the Cyber Civil Rights Initiative can provide guidance and support.' },
+    ],
+    keyPoints: ['Report harmful content immediately', 'Document evidence first', 'Use platform-specific channels', 'Support resources available'],
+    relatedLinks: [{ title: 'Cyber Civil Rights Initiative', url: '#' }, { title: 'Platform Report Links', url: '#' }],
+  },
+];
+
 export interface Tutorial {
   id: string;
   title: string;

@@ -1,7 +1,12 @@
 import React from 'react';
-import { Scale, AlertTriangle, Shield, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Scale, AlertTriangle, Shield, FileText, ArrowRight } from 'lucide-react';
+import { ETHICS_DATA } from '../constants';
 
 const EthicsPage: React.FC = () => {
+  const hotTopics = ETHICS_DATA.filter(t => t.category === 'topic');
+  const resources = ETHICS_DATA.filter(t => t.category === 'resource');
+
   return (
     <div className="min-h-screen bg-neutral-100 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -68,6 +73,28 @@ const EthicsPage: React.FC = () => {
                 </li>
               </ul>
             </div>
+
+            {/* Hot Topics Grid */}
+            <div>
+              <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
+                <AlertTriangle className="text-orange-500" /> EXPLORE HOT TOPICS
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {hotTopics.map((topic) => (
+                  <Link
+                    key={topic.id}
+                    to={`/ethics/${topic.id}`}
+                    className={`${topic.bgColor} border-2 border-black p-6 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:-translate-y-1 transition-all group`}
+                  >
+                    <h4 className="text-xl font-black mb-2 group-hover:underline">{topic.title}</h4>
+                    <p className="text-sm text-neutral-700 mb-4 line-clamp-2">{topic.description}</p>
+                    <span className="inline-flex items-center gap-2 font-bold text-sm">
+                      READ MORE <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Sidebar */}
@@ -77,18 +104,14 @@ const EthicsPage: React.FC = () => {
                 <AlertTriangle className="text-orange-500" /> HOT TOPICS
               </h3>
               <ul className="space-y-3">
-                <li className="border-b-2 border-black pb-3">
-                  <a href="#" className="font-bold hover:underline">Copyright & Training Data</a>
-                </li>
-                <li className="border-b-2 border-black pb-3">
-                  <a href="#" className="font-bold hover:underline">Deepfakes & Misinformation</a>
-                </li>
-                <li className="border-b-2 border-black pb-3">
-                  <a href="#" className="font-bold hover:underline">Artist Compensation</a>
-                </li>
-                <li className="pb-3">
-                  <a href="#" className="font-bold hover:underline">Environmental Impact</a>
-                </li>
+                {hotTopics.map((topic, index) => (
+                  <li key={topic.id} className={index !== hotTopics.length - 1 ? "border-b-2 border-black pb-3" : "pb-3"}>
+                    <Link to={`/ethics/${topic.id}`} className="font-bold hover:underline flex items-center justify-between group">
+                      {topic.shortTitle}
+                      <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -97,10 +120,14 @@ const EthicsPage: React.FC = () => {
                 <Shield className="text-lime-400" /> RESOURCES
               </h3>
               <ul className="space-y-2 text-neutral-300">
-                <li><a href="#" className="hover:text-lime-400">→ AI Ethics Framework</a></li>
-                <li><a href="#" className="hover:text-lime-400">→ Legal Guidelines PDF</a></li>
-                <li><a href="#" className="hover:text-lime-400">→ Best Practices Checklist</a></li>
-                <li><a href="#" className="hover:text-lime-400">→ Report Misuse</a></li>
+                {resources.map((resource) => (
+                  <li key={resource.id}>
+                    <Link to={`/ethics/${resource.id}`} className="hover:text-lime-400 flex items-center gap-2 group">
+                      <span>→</span>
+                      <span className="group-hover:underline">{resource.title}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
