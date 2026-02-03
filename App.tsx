@@ -10,6 +10,7 @@ import ToolsPage from './pages/ToolsPage';
 import TutorialsPage from './pages/TutorialsPage';
 import EthicsPage from './pages/EthicsPage';
 import CommunityPage from './pages/CommunityPage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 const HomePage: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/search" element={<SearchResultsPage />} />
             <Route path="/tools" element={<ToolsPage />} />
             <Route path="/tutorials" element={<TutorialsPage />} />
             <Route path="/ethics" element={<EthicsPage />} />
