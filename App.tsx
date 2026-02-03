@@ -18,6 +18,10 @@ import EthicsTopicPage from './pages/EthicsTopicPage';
 import MemberProfilePage from './pages/MemberProfilePage';
 import EventDetailPage from './pages/EventDetailPage';
 import LeaderboardPage from './pages/LeaderboardPage';
+import ManifestoPage from './pages/ManifestoPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
 
 const HomePage: React.FC = () => {
   return (
@@ -50,6 +54,10 @@ const App: React.FC = () => {
             <Route path="/member/:id" element={<MemberProfilePage />} />
             <Route path="/event/:id" element={<EventDetailPage />} />
             <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="/manifesto" element={<ManifestoPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms" element={<TermsOfServicePage />} />
+            <Route path="/cookies" element={<CookiePolicyPage />} />
           </Routes>
         </main>
         <Footer />
