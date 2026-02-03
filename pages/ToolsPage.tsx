@@ -1,51 +1,14 @@
 import React from 'react';
-import { Wrench, ExternalLink, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Wrench, ArrowRight, Star } from 'lucide-react';
+import { TOOLS_DATA } from '../constants';
 import Button from '../components/Button';
 
-const TOOLS_DATA = [
-  {
-    name: 'Midjourney',
-    description: 'AI image generation with stunning artistic quality',
-    category: 'IMAGE',
-    rating: 4.9,
-    url: '#',
-  },
-  {
-    name: 'Stable Diffusion',
-    description: 'Open-source image generation model',
-    category: 'IMAGE',
-    rating: 4.7,
-    url: '#',
-  },
-  {
-    name: 'Runway ML',
-    description: 'AI-powered video editing and generation',
-    category: 'VIDEO',
-    rating: 4.8,
-    url: '#',
-  },
-  {
-    name: 'DALL-E 3',
-    description: 'OpenAI\'s text-to-image generation',
-    category: 'IMAGE',
-    rating: 4.6,
-    url: '#',
-  },
-  {
-    name: 'Figma AI',
-    description: 'AI-assisted design tools in Figma',
-    category: 'DESIGN',
-    rating: 4.5,
-    url: '#',
-  },
-  {
-    name: 'Adobe Firefly',
-    description: 'Generative AI for creative workflows',
-    category: 'DESIGN',
-    rating: 4.4,
-    url: '#',
-  },
-];
+const categoryColors: Record<string, string> = {
+  'IMAGE': 'bg-purple-300',
+  'VIDEO': 'bg-orange-300',
+  'DESIGN': 'bg-cyan-300',
+};
 
 const ToolsPage: React.FC = () => {
   return (
@@ -67,12 +30,13 @@ const ToolsPage: React.FC = () => {
         {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOOLS_DATA.map((tool) => (
-            <div
-              key={tool.name}
-              className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            <Link
+              key={tool.id}
+              to={`/tool/${tool.id}`}
+              className="group bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
             >
               <div className="flex justify-between items-start mb-4">
-                <span className="px-2 py-1 bg-cyan-300 border-2 border-black text-xs font-bold">
+                <span className={`px-2 py-1 border-2 border-black text-xs font-bold ${categoryColors[tool.category] || 'bg-gray-300'}`}>
                   {tool.category}
                 </span>
                 <div className="flex items-center gap-1">
@@ -80,15 +44,12 @@ const ToolsPage: React.FC = () => {
                   <span className="font-bold">{tool.rating}</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-black mb-2">{tool.name}</h3>
+              <h3 className="text-2xl font-black mb-2 group-hover:text-blue-700 transition-colors">{tool.name}</h3>
               <p className="text-neutral-600 mb-4">{tool.description}</p>
-              <a
-                href={tool.url}
-                className="inline-flex items-center gap-2 font-bold hover:underline"
-              >
-                Visit Tool <ExternalLink size={16} />
-              </a>
-            </div>
+              <span className="inline-flex items-center gap-2 font-bold group-hover:underline">
+                View Details <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           ))}
         </div>
 

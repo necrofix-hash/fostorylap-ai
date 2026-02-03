@@ -150,3 +150,115 @@ export const MOCK_ARTICLES: Article[] = [
 ];
 
 export const MARQUEE_TEXT = "BREAKING NEWS +++ AI TAKES OVER PIXELS +++ NEW MODELS RELEASED +++ GENERATIVE FILL IS MAGIC +++ ";
+
+export interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  fullDescription: string;
+  category: string;
+  rating: number;
+  externalUrl: string;
+  features: string[];
+  pricing: string;
+  platforms: string[];
+}
+
+export const TOOLS_DATA: Tool[] = [
+  {
+    id: 'midjourney',
+    name: 'Midjourney',
+    description: 'AI image generation with stunning artistic quality',
+    fullDescription: 'Midjourney is an independent research lab that produces an AI program under the same name that creates images from textual descriptions. It is one of the most popular AI art generators, known for its distinctive artistic style and high-quality outputs.',
+    category: 'IMAGE',
+    rating: 4.9,
+    externalUrl: 'https://midjourney.com',
+    features: ['Text-to-image generation', 'Style variations', 'Upscaling', 'Pan and zoom', 'Remix mode'],
+    pricing: 'From $10/month',
+    platforms: ['Discord', 'Web'],
+  },
+  {
+    id: 'stable-diffusion',
+    name: 'Stable Diffusion',
+    description: 'Open-source image generation model',
+    fullDescription: 'Stable Diffusion is a deep learning, text-to-image model released in 2022. It is primarily used to generate detailed images conditioned on text descriptions, and can also be used for inpainting, outpainting, and image-to-image translations.',
+    category: 'IMAGE',
+    rating: 4.7,
+    externalUrl: 'https://stability.ai',
+    features: ['Open-source', 'Local installation', 'LoRA training', 'ControlNet support', 'Inpainting'],
+    pricing: 'Free (self-hosted)',
+    platforms: ['Local', 'Web', 'API'],
+  },
+  {
+    id: 'runway-ml',
+    name: 'Runway ML',
+    description: 'AI-powered video editing and generation',
+    fullDescription: 'Runway is an applied AI research company building the next generation of creative tools. Their Gen-2 model enables text-to-video and image-to-video generation, revolutionizing video content creation.',
+    category: 'VIDEO',
+    rating: 4.8,
+    externalUrl: 'https://runwayml.com',
+    features: ['Text-to-video', 'Image-to-video', 'Video editing', 'Green screen', 'Motion tracking'],
+    pricing: 'From $15/month',
+    platforms: ['Web', 'iOS'],
+  },
+  {
+    id: 'dall-e-3',
+    name: 'DALL-E 3',
+    description: "OpenAI's text-to-image generation",
+    fullDescription: 'DALL-E 3 is OpenAI\'s latest image generation model, integrated with ChatGPT. It understands significantly more nuance and detail than previous systems, allowing you to easily translate your ideas into exceptionally accurate images.',
+    category: 'IMAGE',
+    rating: 4.6,
+    externalUrl: 'https://openai.com/dall-e-3',
+    features: ['ChatGPT integration', 'High accuracy', 'Text rendering', 'Style control', 'Safety features'],
+    pricing: 'Included with ChatGPT Plus ($20/month)',
+    platforms: ['Web', 'API', 'Bing'],
+  },
+  {
+    id: 'figma-ai',
+    name: 'Figma AI',
+    description: 'AI-assisted design tools in Figma',
+    fullDescription: 'Figma AI brings intelligent features directly into the design workflow. From generating design variations to automating repetitive tasks, it helps designers work faster and more creatively.',
+    category: 'DESIGN',
+    rating: 4.5,
+    externalUrl: 'https://figma.com',
+    features: ['Auto layout suggestions', 'Content generation', 'Design search', 'Asset recommendations', 'Prototype assistance'],
+    pricing: 'Included with Figma Pro',
+    platforms: ['Web', 'Desktop'],
+  },
+  {
+    id: 'adobe-firefly',
+    name: 'Adobe Firefly',
+    description: 'Generative AI for creative workflows',
+    fullDescription: 'Adobe Firefly is a family of creative generative AI models designed to be safe for commercial use. It\'s integrated across Adobe Creative Cloud apps, enabling text-to-image, generative fill, and text effects.',
+    category: 'DESIGN',
+    rating: 4.4,
+    externalUrl: 'https://firefly.adobe.com',
+    features: ['Generative fill', 'Text effects', 'Adobe CC integration', 'Commercial safe', 'Style transfer'],
+    pricing: 'From $4.99/month',
+    platforms: ['Web', 'Photoshop', 'Illustrator'],
+  },
+  {
+    id: 'leonardo-ai',
+    name: 'Leonardo AI',
+    description: 'AI-powered asset generation for games and creative projects',
+    fullDescription: 'Leonardo AI is a powerful creative platform that enables users to generate production-quality visual assets for games, concept art, and design projects with unprecedented speed and style consistency.',
+    category: 'IMAGE',
+    rating: 4.6,
+    externalUrl: 'https://leonardo.ai',
+    features: ['Game asset generation', 'Character design', 'Texture creation', 'Model training', 'Real-time canvas'],
+    pricing: 'Free tier available',
+    platforms: ['Web'],
+  },
+  {
+    id: 'pika-labs',
+    name: 'Pika Labs',
+    description: 'AI video generation and editing platform',
+    fullDescription: 'Pika is an AI video generation platform that creates and edits videos from text, images, or existing video clips. It offers intuitive controls for camera movement, style, and motion.',
+    category: 'VIDEO',
+    rating: 4.5,
+    externalUrl: 'https://pika.art',
+    features: ['Text-to-video', 'Lip sync', 'Video editing', 'Camera controls', 'Style presets'],
+    pricing: 'Free tier available',
+    platforms: ['Web', 'Discord'],
+  },
+];

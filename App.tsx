@@ -12,6 +12,7 @@ import EthicsPage from './pages/EthicsPage';
 import CommunityPage from './pages/CommunityPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
+import ToolDetailPage from './pages/ToolDetailPage';
 
 const HomePage: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path="/search" element={<SearchResultsPage />} />
             <Route path="/article/:id" element={<ArticleDetailPage />} />
             <Route path="/tools" element={<ToolsPage />} />
+            <Route path="/tool/:id" element={<ToolDetailPage />} />
             <Route path="/tutorials" element={<TutorialsPage />} />
             <Route path="/ethics" element={<EthicsPage />} />
             <Route path="/community" element={<CommunityPage />} />
