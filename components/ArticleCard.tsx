@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Article } from '../types';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -8,7 +9,7 @@ interface ArticleCardProps {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   return (
-    <div className="group h-full flex flex-col bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:shadow-[12px_12px_0px_0px_#000] hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
+    <Link to={`/article/${article.id}`} className="group h-full flex flex-col bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:shadow-[12px_12px_0px_0px_#000] hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden relative">
       
       {/* Header/Image Section */}
       <div className="relative border-b-4 border-black h-48 overflow-hidden">
@@ -42,7 +43,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
             </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
