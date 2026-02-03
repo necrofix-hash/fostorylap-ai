@@ -80,15 +80,15 @@ const NewsGrid: React.FC = () => {
         </div>
 
         {/* Progress indicator */}
-        {MOCK_ARTICLES.length > ITEMS_PER_LOAD && (
+        {hasMore && (
           <div className="mt-8 max-w-md mx-auto">
             <div className="flex justify-between text-sm font-mono mb-2">
-              <span>{visibleCount} of {MOCK_ARTICLES.length}</span>
-              <span>{Math.round((visibleCount / MOCK_ARTICLES.length) * 100)}%</span>
+              <span className="font-bold">{visibleCount} of {MOCK_ARTICLES.length} articles</span>
+              <span className="font-bold">{Math.round((visibleCount / MOCK_ARTICLES.length) * 100)}% loaded</span>
             </div>
-            <div className="h-2 bg-white border-2 border-black">
+            <div className="h-3 bg-white border-2 border-black overflow-hidden">
               <div
-                className="h-full bg-black transition-all duration-500"
+                className="h-full bg-lime-400 transition-all duration-500 ease-out"
                 style={{ width: `${(visibleCount / MOCK_ARTICLES.length) * 100}%` }}
               />
             </div>
